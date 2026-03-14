@@ -173,7 +173,13 @@ require_once 'logica.php';
                         <a href="?editar=<?= $id ?>" class="btn btn-card-edit fw-bold text-uppercase rounded-1 d-inline-flex align-items-center gap-2" style="font-size:.8rem; padding:6px 16px;">
                             <img src="img/icone-editar.svg"  alt="" width="13" height="13"> Editar
                         </a>
-                        <a href="#" class="btn btn-card-delete fw-bold text-uppercase rounded-1 d-inline-flex align-items-center gap-2" style="font-size:.8rem; padding:6px 16px;" onclick="confirmarDelete(event,'<?= $id ?>','<?= sanitizar($jogo['nome']) ?>')">
+                        <a href="#" 
+                            class="btn btn-card-delete fw-bold text-uppercase rounded-1 d-inline-flex align-items-center gap-2" 
+                            style="font-size:.8rem; padding:6px 16px;" 
+                            data-id="<?= $id ?>"
+                            data-nome="<?= sanitizar($jogo['nome']) ?>"
+                            onclick="confirmarDelete(event, this)" 
+                            aria-label="Remover <?= sanitizar($jogo['nome']) ?>">
                             <img src="img/icone-excluir.svg" alt="" width="13" height="13"> Remover
                         </a>
                     </div>

@@ -26,8 +26,11 @@ const swalSteam = Swal.mixin({
     cancelButtonColor: '#3b3e48',
 });
 
-function confirmarDelete(event, id, nomeJogo) {
+function confirmarDelete(event, elemento) {
     event.preventDefault();
+    const id = elemento.getAttribute('data-id');
+    const nomeJogo = elemento.getAttribute('data-nome');
+
     swalSteam.fire({
         title: 'Remover jogo?',
         html: `Tem certeza que deseja remover <strong style="color:#fff">${nomeJogo}</strong>?
@@ -38,14 +41,16 @@ function confirmarDelete(event, id, nomeJogo) {
         confirmButtonText: 'Sim, remover',
         cancelButtonText: 'Cancelar',
         confirmButtonColor: '#a02020',
-    }).then(r => { if (r.isConfirmed) window.location = '?deletar=' + id; });
+    }).then(r => { 
+        if (r.isConfirmed) window.location = '?deletar=' + id; 
+    });
 }
 
 function confirmarPopular(event) {
     event.preventDefault();
     swalSteam.fire({
         title: 'Carregar Jogos de Exemplo?',
-        html: `Serão adicionados <strong style="color:#fff">22 títulos</strong> populares à sua biblioteca.
+        html: `Serão adicionados <strong style="color:#fff">23 títulos</strong> populares à sua biblioteca.
                <br><small style="color:#8f98a0">Jogos já existentes não serão substituídos.</small>`,
         imageUrl: 'img/icone-sucesso.svg',
         imageWidth: 64, imageHeight: 64, imageAlt: 'Ícone de confirmação',
